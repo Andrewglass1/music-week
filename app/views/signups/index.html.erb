@@ -1,0 +1,40 @@
+Today
+</br>
+<% today_signup = @signups.find {|signup| signup.date == Date.today} %>
+<% if today_signup %>
+</br>
+  <%= today_signup.album.name %>
+  <%= today_signup.album.artist %>
+</br>
+  <%= image_tag today_signup.album.art, :class => "album" %>
+<% else %>
+<p> Nothing for this day</p>
+<% end %>
+</br>
+</br>
+Tomorrow
+<br/>
+<% tom_signup = @signups.find {|signup| signup.date == Date.today+1} %>
+<% if tom_signup %>
+  <%= tom_signup.album.name %>
+  <%= tom_signup.album.artist %>
+</br>
+  <%= image_tag tom_signup.album.art, :class => "album" %>
+
+<% else %>
+<p> Nothing for this day</p>
+<% end %>
+</br>
+</br>
+<%= Date.today+2 %>
+</br>
+<% dat_signup = @signups.find {|signup| signup.date == Date.today+2} %>
+<% if dat_signup %>
+  <%= dat_signup.album.name  %>
+  <%= dat_signup.album.artist %>
+</br>
+  <%= image_tag dat_signup.album.art, :class => "album" %>
+
+<% else %>
+<p> Nothing for this day</p>
+<%end%>

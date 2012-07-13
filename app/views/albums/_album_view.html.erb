@@ -1,0 +1,7 @@
+<div>
+<%= link_to (image_tag(album.art, :class => "album")), album_path(album) %>
+<%= album.name %>~<%= album.artist %>
+<% if current_user %>
+	<%= render partial: "signup_form", :locals => { :album_id => album.id }%>
+<% end %>
+</div>

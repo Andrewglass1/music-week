@@ -1,0 +1,18 @@
+
+<%= nested_form_for Album.new, :html => {:multipart => true}  do |f| %>
+  </p>
+  <%= f.file_field :zip %>
+  <%= f.label :ZIPPED_ALBUM_not_working_yet %>
+  </br>
+  </br>
+  </br>
+  </br>
+  <p>add an album song by song</p>
+  <%= f.fields_for :songs do |builder| %>
+    <%= render 'song_fields', f: builder %>
+  <% end %>
+
+<%= link_to_add_fields "Add a Song", f, :songs %>
+
+  <p><%= f.submit "Submit" %></p>
+<% end %>

@@ -1,0 +1,14 @@
+<h1> All Albums</h1>
+
+br
+br
+br
+<%= link_to "add a new album", new_album_path %>
+br
+<%= link_to "see your dashboard", dashboard_path(current_user) if current_user %>
+br
+br
+
+<% @albums.each do |album| %>
+    <%= render partial: "album_view", :locals => { :album => album } %>
+<% end %>
