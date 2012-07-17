@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MusicWeek</title>
+  <title>TuneWeek</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>  
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('#slider1').bxSlider();
-    });
-  </script>
 </head>
 <body>
-<div id="user_nav">
+
+<div id="user_nav" class="pull-right">
   <% if current_user %>
     Logged in as <%= current_user.email %>.
     <%= link_to "Log out", logout_path %>
@@ -22,6 +18,8 @@
     <%= link_to "log in", login_path %>
   <% end %>
 </div>
+<h1 class="brandheader">TuneWeek</h1>
+
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>

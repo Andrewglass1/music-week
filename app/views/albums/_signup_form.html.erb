@@ -1,6 +1,0 @@
-<%= form_for Signup.new do |f| %>
-  <%= f.hidden_field :user_id, { value: current_user.id} %>
-  <%= f.hidden_field :album_id, { value: album_id} %>
-  <%= f.datepicker 'date', :dateFormat => "yy-mm-dd", :placeholder => "Sign up for this Album", :minDate => -0, :maxDate => "+7D" %>
-  <%= f.submit "Sign up!", :id =>album_id, :class=>"signupsubmit" %>
-<% end %>

@@ -36,3 +36,36 @@
   height: 100%;
   float:right;
 }
+
+.albumname {
+  font-style:italic;
+}
+
+.scrolleralbumart {
+  height: 278px;
+}
+
+.slide-out-div-calendar {
+    padding: 20px;
+    width: 1260px;
+    height: 320px;
+    background: #B5B0B2;
+    border: 1px solid #29216d;
+} 
+
+.slide-out-div-album {
+    padding: 20px;
+    width: 1260px;
+    height: 320px;
+    background: #B5B0B2;
+    border: 1px solid #29216d;
+} 
+
+.handle {
+  float: right;
+}
+
+.brandheader {
+  font-size: 150px;
+  line-height:90%;
+}

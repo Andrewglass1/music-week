@@ -16,6 +16,16 @@ jQuery ->
 
 jQuery ->
   playlistHandler()
+  signupHandler()
+
+signupHandler = ->
+  $(".modallaunch").click ->
+    id   = $(this).attr('data-album-id')
+    name = $(this).attr('data-album-name')
+    console.log(id)
+    console.log(name)
+    $('#signup-album').val(id)
+    $('#modalheader').text("Select a day to listen to " + name)
 
 
 playlistHandler = ->
@@ -50,5 +60,5 @@ playlistHandler = ->
     $(".mp3player").attr('src', song)
     $(".mp3player").attr('data-current', track)
     $(".mp3player").attr('autoplay', "true")
-    $("#nowplaying").text(artist + ": " + title)
+    $("#nowplaying").text(title)
     return false

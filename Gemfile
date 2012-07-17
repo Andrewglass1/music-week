@@ -33,8 +33,8 @@ gem 'amazon-album-art'
 gem 'sucker'
 gem 'faraday'
 gem 'nokogiri'
-gem 'zip'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "twitter-bootstrap-rails"
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'
+gem "watu_table_builder", :require => "table_builder"

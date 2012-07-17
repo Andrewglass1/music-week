@@ -1,14 +1,81 @@
-<h1> All Albums</h1>
 
-br
-br
-br
-<%= link_to "add a new album", new_album_path %>
-br
-<%= link_to "see your dashboard", dashboard_path(current_user) if current_user %>
-br
-br
+</br>
+</br>
+</br>
+</br><%= link_to "add a new album", new_album_path, :target => "_blank", :class=>"pull-right" %>
+</br>
+</br>
+<div id="slider-two">
+	<% @albums.each do |album| %>
+		<div>
+		<%= image_tag album.art, :class =>"scrolleralbumart" %>
+			<h2><span><%= album.artist%></span></h2>
+			<h2 class="albumname"><%= album.name %></h2>
+      <%= link_to "Album Details", album_path(album) %>
+      <p>Uploaded by: <%= album.uploader %> </p>
+			<a class="modallaunch btn" data-toggle="modal" href="#myModal" data-album-id="<%= album.id %>" data-album-name="<%= album.name %>">Sign up!</a>
+		</div>
+	<% end %>
+</div>
 
-<% @albums.each do |album| %>
-    <%= render partial: "album_view", :locals => { :album => album } %>
-<% end %>
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <h3 id="modalheader"></h3>
+  </div>
+  <div class="modal-body">
+	<%= form_for Signup.new do |f| %>
+		<% if current_user %>
+	  <%= f.hidden_field :user_id, { value: current_user.id} %>
+	  <% end %>
+	  <%= f.hidden_field :album_id, :id =>"signup-album" %>
+	  <%= f.datepicker 'date', :dateFormat => "yy-mm-dd", :placeholder => "Select a Date", :minDate => -0, :maxDate => "+7D", :embed => true %>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Sign up!" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="slide-out-div-calendar">
+  <a class="handle" href="http://link-for-non-js-users.html">Content</a>
+  <%= render partial: "signups/signups" %>
+</div>
+
+<div class="slide-out-div-album">
+  <a class="albumhandle" href="http://link-for-non-js-users.html">Content</a>
+  <%= render partial: "play", :locals => { :album => todays_album } %>
+</div>
+
+    <script type="text/javascript">
+    $(function(){
+        $('.slide-out-div-calendar').tabSlideOut({
+            tabHandle: '.handle',                     //class of the element that will become your tab
+            pathToTabImage: 'assets/calendar.png', //path to the image for the tab //Optionally can be set using css
+            imageHeight: '128px',                     //height of tab image           //Optionally can be set using css
+            imageWidth: '128px',                       //width of tab image            //Optionally can be set using css
+            tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
+            speed: 300,                               //speed of animation
+            action: 'click',                          //options: 'click' or 'hover', action to trigger animation
+            topPos: '180px',                          //position from the top/ use if tabLocation is left or right
+            leftPos: '50px',                          //position from left/ use if tabLocation is bottom or top
+            fixedPosition: true                      //options: true makes it stick(fixed position) on scroll
+        });
+
+        $('.slide-out-div-album').tabSlideOut({
+            tabHandle: '.albumhandle',                     //class of the element that will become your tab
+            pathToTabImage: 'assets/play.png', //path to the image for the tab //Optionally can be set using css
+            imageHeight: '128px',                     //height of tab image           //Optionally can be set using css
+            imageWidth: '128px',                       //width of tab image            //Optionally can be set using css
+            tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
+            speed: 300,                               //speed of animation
+            action: 'click',                          //options: 'click' or 'hover', action to trigger animation
+            topPos: '600px',                          //position from the top/ use if tabLocation is left or right
+            leftPos: '50px',                          //position from left/ use if tabLocation is bottom or top
+            fixedPosition: true                      //options: true makes it stick(fixed position) on scroll
+        });
+    });
+
+    </script>
+
+

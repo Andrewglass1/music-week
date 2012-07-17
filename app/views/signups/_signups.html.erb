@@ -1,0 +1,20 @@
+<div id="signup-schedule">
+<table class="table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Today</th>
+      <th>Tomorrow</th>
+      <th><%= (Date.today+2).strftime("%B #{(Date.today+2).day.ordinalize}") %></th>
+      <th><%= (Date.today+3).strftime("%B #{(Date.today+3).day.ordinalize}") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= signup_or_holder(Date.today) %></td>
+      <td><%= signup_or_holder(Date.today+1) %></td>
+      <td><%= signup_or_holder(Date.today+2) %></td>
+      <td><%= signup_or_holder(Date.today+3) %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
