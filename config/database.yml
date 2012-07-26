@@ -23,3 +23,17 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: teacher_center_dev
+#   pool: 5
+#   timeout: 5000
+
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: teacher_center_test
+#   pool: 5
+#   timeout: 5000
