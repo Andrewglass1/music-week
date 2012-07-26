@@ -2,7 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-jQuery ->
+$ ->
+  playlistHandler()
+  signupHandler()
+
+  $('.popup').click () ->
+    url = $(this).attr('href')
+    window.open(url,"Upload an Album","height=350,width=650,menubar=false")
+    return false
+
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide()
@@ -13,10 +21,6 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
-
-jQuery ->
-  playlistHandler()
-  signupHandler()
 
 signupHandler = ->
   $(".modallaunch").click ->

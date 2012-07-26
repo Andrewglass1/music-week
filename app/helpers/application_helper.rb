@@ -12,13 +12,14 @@ module ApplicationHelper
   def todays_album_link
   	if current_user
   		album = current_user.signups.find_by_date(Date.today).album
-  		link_to("Today's Album", album_path(album)).html_safe
+  		link_to("Today's Album", album_path(album)).html_safe if album
   	end
   end
 
-  def todays_album
+  def todays_album_or_nil
     if current_user
-      current_user.signups.find_by_date(Date.today).album
+      todays_signup = current_user.signups.find_by_date(Date.today)
+      todays_signup.album if todays_signup
     end
   end
 end

@@ -1,0 +1,17 @@
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <h3 id="modalheader"></h3>
+  </div>
+  <div class="modal-body">
+  <%= form_for Signup.new do |f| %>
+    <% if current_user %>
+    <%= f.hidden_field :user_id, { value: current_user.id} %>
+    <% end %>
+    <%= f.hidden_field :album_id, :id =>"signup-album" %>
+    <%= f.datepicker 'date', :dateFormat => "yy-mm-dd", :placeholder => "Select a Date", :minDate => -0, :maxDate => "+7D", :embed => true %>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Sign up!" %>
+    <% end %>
+  </div>
+</div>

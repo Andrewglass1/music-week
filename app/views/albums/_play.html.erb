@@ -1,17 +1,21 @@
 <div>
-	<div class="span6">
-	<h2><%= album.artist %> ~<%= album.name %></h2>
-	<%= image_tag album.art, :class => "album" %>
-	</div>
-	<div class="span6">
-	<audio class="mp3player" width="300" height="32" src="" controls="controls" data-current="" preload="auto" autoplay="false" autobuffer="">
-	</audio>
-	<a href="#" id="prev"><%= image_tag "back.png", :class=>"button" %></a>
-	<a href="#" id="next"><%= image_tag "next.png", :class=>"button" %></a>
-	<h2 id="nowplaying"></h2> 
-	<% album.songs.each do |song| %>
-	<a href="#" class="song" data-track="<%=song.track_number%>" data-song="<%=song.file_url%>" data-artist="<%=song.album.artist%>" data-title="<%=song.title%>"><%=image_tag("play.png", :class=>"button")%> <%=song.title%></a>
-	</br>
+	<% if album %>
+		<div class="span6">
+		<h2><%= album.artist %> ~<%= album.name %></h2>
+		<%= image_tag album.art, :class => "album" %>
+		</div>
+		<div class="span6">
+		<audio class="mp3player" width="300" height="32" src="" controls="controls" data-current="" preload="auto" autoplay="false" autobuffer="">
+		</audio>
+		<a href="#" id="prev"><%= image_tag "back.png", :class=>"button" %></a>
+		<a href="#" id="next"><%= image_tag "next.png", :class=>"button" %></a>
+		<h2 id="nowplaying"></h2> 
+		<% album.songs.each do |song| %>
+		<a href="#" class="song" data-track="<%=song.track_number%>" data-song="<%=song.file_url%>" data-artist="<%=song.album.artist%>" data-title="<%=song.title%>"><%=image_tag("play.png", :class=>"button")%> <%=song.title%></a>
+		</br>
+		<% end %>
+		</div>
+	<% else %>
+		<p class="nosignup">you didn't sign up for an album today (its not too late)</p>
 	<% end %>
-	</div>
 </div>

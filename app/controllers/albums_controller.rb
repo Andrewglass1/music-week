@@ -14,16 +14,21 @@ class AlbumsController < ApplicationController
   end
 
   def new
+    render :layout => 'bare'
     @album = Album.new
   end
 
   def create
     @album = Album.new(params[:album])
     if @album.save
-      redirect_to album_path(@album)
+      redirect_to uploaded_path(:album_name => @album.name)
     else
       render :new
     end
+  end
+
+  def uploaded
+    render :layout => 'bare'
   end
 
 end

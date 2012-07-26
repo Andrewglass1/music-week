@@ -7,6 +7,7 @@ MusicWeek::Application.routes.draw do
     resources :songs, :only => [:create, :destroy]
   end
   match '/dashboard' => 'signups#index'
+  match '/uploaded' => 'albums#uploaded'
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"

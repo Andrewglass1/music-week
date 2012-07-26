@@ -1,31 +1,21 @@
 class Album < ActiveRecord::Base
   attr_accessible :art, :artist, :name, :number_of_songs, :songs_attributes, :zip, :uploaded_by
-  has_many :songs
-  has_many :signups
+  has_many :songs, :dependent => :destroy
+  has_many :signups, :dependent => :destroy
   accepts_nested_attributes_for :songs
-  mount_uploader :zip, ZipUploader
+  after_create :import_all
 
-  # def read_zip
-  #   zipped_album = open(zip.url)
-  #   Zip::ZipFile.open(zipped_album) do |zipfile|
-  #     zipfile.each do |file|
-  #       puts file.inspect
-  #       # self.songs.create(file: file)
-  #     end
-  #   end
-  # end
+  def import_all
+    tag_songs
+    import_album_tags
+    import_cover
+  end
 
   def uploader
     if uploaded_by
       user = User.find(uploaded_by)
       user.email if user
     end
-  end
-
-  def import_all
-    tag_songs
-    import_album_tags
-    import_cover
   end
 
   def fetch_cover
