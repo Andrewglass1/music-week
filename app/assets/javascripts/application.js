@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require jquery.ui.datepicker
+//= require_tree ../../../vendor/assets/javascripts/.
